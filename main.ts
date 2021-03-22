@@ -12,7 +12,10 @@ input.onButtonPressed(Button.B, function () {
     change_target(10)
 })
 function show_target () {
-	
+    led.plotBarGraph(
+    target_light,
+    255
+    )
 }
 let target_light = 0
 radio.setGroup(1)
