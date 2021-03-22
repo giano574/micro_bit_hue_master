@@ -6,6 +6,7 @@ function change_target (value: number) {
     show_target()
 }
 radio.onReceivedString(function (receivedString) {
+    basic.showString("" + ("this".split(",")[0]))
     serial.writeLine(receivedString)
 })
 input.onButtonPressed(Button.B, function () {
