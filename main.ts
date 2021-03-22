@@ -6,17 +6,13 @@ function change_target (value: number) {
     show_target()
 }
 radio.onReceivedString(function (receivedString) {
-    basic.showString("" + (receivedString.split(",")[0]))
     serial.writeLine(receivedString)
 })
 input.onButtonPressed(Button.B, function () {
     change_target(10)
 })
 function show_target () {
-    led.plotBarGraph(
-    target_light,
-    255
-    )
+	
 }
 let target_light = 0
 radio.setGroup(1)
@@ -24,8 +20,9 @@ let id = "m"
 target_light = Math.round(255 / 2)
 show_target()
 basic.forever(function () {
-    if (Math.abs(input.lightLevel() - target_light) > 0) {
-        serial.writeLine("" + id + "," + input.lightLevel() + "," + target_light)
+    target_light = input.lightLevel()
+    if (Math.abs(target_light - target_light) > 0) {
+        serial.writeLine("" + id + "," + target_light + "," + target_light)
         basic.pause(10000)
     }
 })
